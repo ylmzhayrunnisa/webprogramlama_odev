@@ -1,18 +1,92 @@
 ﻿@{
     ViewData["Title"] = "Giriş Yap";
 
+
+
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
+<style>
+    /* Genel Ayarlar */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4; /* Arka Plan */
+}
 
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Card Tasarımı */
+.card {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #800000; /* Bordo Arka Plan */
+    color: white;
+    padding: 20px;
+}
+
+.card-body {
+    background-color: #fff;
+    padding: 30px;
+}
+
+/* Form Etiket ve Input Alanları */
+.form-label {
+    font-weight: 600;
+    color: #800000; /* Bordo Etiket Rengi */
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-shadow: none;
+    padding: 12px;
+}
+
+.form-control:focus {
+    border-color: #800000;
+    box-shadow: 0 0 5px rgba(128, 0, 0, 0.5);
+}
+
+/* Hata Mesajları */
+.alert.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+    font-weight: 500;
+}
+
+/* Giriş Yap Butonu */
+.btn-bordo {
+    background-color: #800000; /* Bordo Arka Plan */
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 12px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-bordo:hover {
+    background-color: #660000; /* Hoverda daha koyu bordo */
+}
+
+
+</style>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card">
+            <div class="card border-0 shadow-lg">
                 <div class="card-header text-center bg-dark text-white">
                     <h4>Giriş Yap</h4>
                 </div>
                 <div class="card-body">
                     @if (ViewBag.Error != null)
+
                     {
                         <div class="alert alert-danger text-center">
                             @ViewBag.Error
@@ -28,7 +102,7 @@
                             <input type="password" class="form-control" id="password" name="password" placeholder="Şifrenizi girin" required>
                         </div>
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-dark">Giriş Yap</button>
+                            <button type="submit" class="btn btn-bordo">Giriş Yap</button>
                         </div>
                     </form>
                 </div>

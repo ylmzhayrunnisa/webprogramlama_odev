@@ -5,8 +5,83 @@
 
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
+<style>
+    /* Container ayarları */
+    .form-container {
+        background-color: #ffffff; /* Beyaz arkaplan */
+        border: 1px solid #ddd; /* İnce gri çerçeve */
+        border-radius: 10px; /* Köşeleri yumuşat */
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge efekti */
+        padding: 30px; /* İçerik ile kenar arası */
+        margin: 20px auto; /* Ekran ortasına yerleştir */
+        max-width: 600px; /* Maksimum genişlik */
+    }
+
+        /* Başlık */
+        .form-container h2 {
+            color: #800020; /* Bordo */
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        /* Form alanları */
+        .form-container .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-container label {
+            font-weight: bold;
+            color: #333; /* Koyu gri yazı */
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container input[type="file"],
+        .form-container select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #b33c50; /* Bordo sınır */
+            border-radius: 5px;
+            box-sizing: border-box; /* Padding dahil genişlik */
+            font-size: 1em;
+            background-color: #fdfdfd; /* Hafif açık gri */
+        }
+
+            .form-container input:focus,
+            .form-container select:focus {
+                outline: none;
+                border-color: #800020; /* Odaklanıldığında bordo renk */
+                box-shadow: 0 0 5px rgba(128, 0, 32, 0.5); /* Bordo odak efekti */
+            }
+
+        /* Kaydet Butonu */
+        .form-container button[type="submit"] {
+            background-color: #800020; /* Bordo */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            margin: 20px auto 0;
+        }
+
+            .form-container button[type="submit"]:hover {
+                background-color: #5f0018; /* Daha koyu bordo */
+            }
+
+    /* Hata mesajları */
+    .text-danger {
+        font-size: 0.9em;
+        color: #d9534f; /* Bootstrap kırmızı tonu */
+    }
+</style>
 
 <div class="container mt-4">
+    <div class="form-container">
     <h2 class="text-center">Bölüm Güncelle</h2>
     <form asp-controller = "Bolum" asp-action="BolumUpdate" method="post">
         <input type="hidden" name="Id" value="@Model.Id" />
@@ -24,4 +99,5 @@
         </div>
         <button type="submit" class="btn btn-success mt-3">Kaydet</button>
     </form>
+</div>
 </div>
