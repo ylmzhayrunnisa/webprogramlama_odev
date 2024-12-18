@@ -1,0 +1,145 @@
+﻿@{
+    ViewData["Title"] = "Admin Paneli";
+
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<style>
+   /* Genel Stil */
+body {
+    background-color: #f8f9fa; /* Hafif gri arka plan */
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    height:100%;
+       
+}
+
+h1, p {
+    margin-bottom: 20px;
+}
+
+/* Container Stil */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    
+}
+
+/* Kartların Temel Görünümü */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .card:hover {
+        transform: translateY(-10px); /* Hover'da kartı yukarı kaldırır */
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Gölgeyi artırır */
+    }
+
+.card-header {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 15px 0;
+    background-color: #5a0015 !important; /* Bordo */
+    color: #fff !important; /* Beyaz yazı */
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Hover efekti */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Gölge efekti */
+}
+
+.card .btn {
+    background-color: #800020; /* Bordo */
+    color: #fff;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+    .card .btn:hover {
+        background-color: #5a0015; /* Daha koyu bordo hover */
+        transform: scale(1.05);
+    }
+
+
+
+
+</style>
+
+<h1 class="text-center mt-4">Admin Paneli</h1>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-header text-white">
+                    Asistan Yönetimi
+                </div>
+                <div class="card-body">
+                    <p>Asistan ekleme,silme ve düzenleme</p>
+                    <a asp-controller="Asistan" asp-action="AsistanList" class="btn">Yönet</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-header text-white">
+                    Hoca Yönetimi
+                </div>
+                <div class="card-body">
+                    <p>Hoca ekleme, silme ve düzenleme</p>
+                    <a asp-controller="Hoca" asp-action="HocaList" class="btn">Yönet</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-header text-white">
+                    Bölüm Yönetimi
+                </div>
+                <div class="card-body">
+                    <p>Bölüm bilgilerini düzenleme </p>
+                    <a asp-controller="Bolum" asp-action="BolumList" class="btn">Yönet</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-header text-white">
+                    Randevu Yönetimi
+                </div>
+                <div class="card-body">
+                    <p>Randevu oluşturma ve düzenleme </p>
+                    <a asp-controller="Randevu" asp-action="RandevuList" class="btn">Yönet</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-header text-white">
+                    Nöbet Yönetimi
+                </div>
+                <div class="card-body">
+                    <p>Nöbet takvimini düzenleme</p>
+                    <a asp-controller="Nobet" asp-action="NobetList" class="btn">Yönet</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-header text-white">
+                    Acil Durum Yönetimi
+                </div>
+                <div class="card-body">
+                    <p>Acil Durum görüntüleme ve düzenleme.</p>
+                    <a asp-controller="Acil" asp-action="AcilList" class="btn">Yönet</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

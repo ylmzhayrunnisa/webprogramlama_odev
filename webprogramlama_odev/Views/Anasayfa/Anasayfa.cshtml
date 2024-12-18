@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Anasayfa";
+
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<section class="welcome-section text-center mt-5">
+    <!-- Hoş Geldiniz Yazısı -->
+    <h1 class="mb-4 display-4 fw-bold">Pediatri Yönetim Sistemi'ne Hoşgeldiniz</h1>
+    <p class="lead text-secondary">Nöbetlerinizi, randevularınızı ve tüm sistem bilgilerini kolayca yönetin.</p>
+
+    <!-- Ortada Görsel -->
+    <div class="mt-5">
+        <img src="/images/foto2.jpg" alt="Pediatri Yönetim Sistemi Görseli" class="img-fluid rounded shadow-lg" style="max-width: 60%; height: auto;">
+    </div>
+</section>
+
+<style>
+    /* Hoş Geldiniz Bölümü Stil Ayarları */
+    .welcome-section {
+        margin-top: 50px;
+        padding: 20px;
+    }
+
+        .welcome-section h1 {
+            font-size: 2.5rem;
+            color: #800020; /* Bordo Renk */
+        }
+
+        .welcome-section p {
+            font-size: 1.2rem;
+            color: #6c757d;
+        }
+
+        /* Görselin Stil Ayarları */
+        .welcome-section img {
+            border: 5px solid #ddd;
+            background-color: #f9f9f9;
+        }
+</style>

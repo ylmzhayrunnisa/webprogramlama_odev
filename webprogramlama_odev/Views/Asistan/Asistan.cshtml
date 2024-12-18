@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Asistanlar";
+
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@model List<webprogramlama_odev.Models.Asistan>
+
+<h2 class="text-center">Asistanlar Listesi</h2>
+<p class="text-center">Bu sayfada asistanların listesini görebilirsiniz.</p>
+
+
+<div class="container">
+    <div class="row">
+        @foreach (var asistan in Model)
+        {
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <img src="@asistan.Resim" class="card-img-top" alt="Asistan Resmi" style="height: 500px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">@asistan.Ad @asistan.Soyad</h5>
+                        <p class="card-text">
+                            <strong>Telefon:</strong> @asistan.Telefon <br />
+                            <strong>E-posta:</strong> @asistan.Mail <br />
+                            <strong>Bölüm:</strong> @(asistan.Bolum != null ? asistan.Bolum.BolumAdi : "Bölüm Yok")
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

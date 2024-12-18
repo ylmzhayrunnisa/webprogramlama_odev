@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Hocalar";
+
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@model List<webprogramlama_odev.Models.Hoca>
+
+<h2 class="text-center">Hocalar Listesi</h2>
+<p class="text-center">Bu sayfada hocaların listesini görebilirsiniz.</p>
+
+
+<div class="container">
+    <div class="row">
+        @foreach (var hoca in Model)
+        {
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <img src="@hoca.Resim" class="card-img-top" alt="Hoca Resmi" style="height: 500px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">@hoca.Ad @hoca.Soyad</h5>
+                        <p class="card-text">
+                            <strong>Telefon:</strong> @hoca.Telefon <br />
+                            <strong>E-posta:</strong> @hoca.Mail <br />
+                            <strong>Bölüm:</strong> @(hoca.Bolum != null ? hoca.Bolum.BolumAdi : "Bölüm Yok")
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

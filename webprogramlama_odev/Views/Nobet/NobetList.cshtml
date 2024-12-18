@@ -1,0 +1,43 @@
+﻿@model IEnumerable<webprogramlama_odev.Models.Nobet>
+
+@{
+    ViewData["Title"] = "Nöbet Yönetimi";
+
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="container mt-4">
+    <h2 class="text-center">Randevu Yönetimi</h2>
+    <div class="text-right mb-3">
+        <a asp-action="NobetAdd" class="btn btn-success">Nöbet Ekle</a>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Asistan</th>
+                <th>Bolum</th>
+                <th>Başlama Tarihi ve Saati</th>
+                <th>Bitiş Tarihi ve Saati</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var nobet in Model)
+            {
+                <tr>
+                    <td>@nobet.Asistan.Ad @nobet.Asistan.Soyad</td>
+                    <td>@nobet.Bolum.BolumAdi</td>
+                    <td>@nobet.BaslamaTarihi.ToShortDateString() @nobet.BaslamaSaati.ToString(@"hh\:mm")</td>
+                    <td>@nobet.BitisTarihi.ToShortDateString() @nobet.BitisSaati.ToString(@"hh\:mm")</td>
+                    <td>
+                        <a asp-action="NobetUpdate" asp-route-id="@nobet.Id" class="btn btn-warning btn-sm">Düzenle</a>
+                        <a asp-action="NobetDelete" asp-route-id="@nobet.Id" class="btn btn-danger btn-sm">Sil</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+

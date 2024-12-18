@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "Takvim";
+
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<style>
+    /* Takvim genel arkaplanı ve kenarlık */
+    #calendar {
+        margin-top: 20px;
+        border: 2px solid #800020; /* Bordo kenarlık */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        border-radius: 8px;
+        background-color: #f8f9fa; /* Hafif gri arkaplan */
+    }
+
+    /* Başlık ve araç çubuğu */
+    .fc-toolbar-title {
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: #800020; /* Bordo başlık */
+    }
+
+    .fc-button {
+        background-color: #800020 !important; /* Bordo butonlar */
+        border-color: #800020 !important;
+        color: white !important;
+    }
+
+        .fc-button:hover {
+            background-color: #a52a2a !important; /* Daha açık bordo hover */
+            border-color: #a52a2a !important;
+        }
+
+    /* Gün numaraları */
+    .fc-daygrid-day-number {
+        font-size: 1rem;
+        color: #800020; /* Bordo gün numaraları */
+    }
+
+    /* Etkinlikler */
+    .fc-event {
+        font-size: 0.9rem;
+        color: white !important;
+        background-color: #800020 !important; /* Bordo etkinlik arkaplanı */
+        border: none;
+        padding: 2px 4px;
+        border-radius: 4px;
+    }
+
+        .fc-event:hover {
+            background-color: #a52a2a !important; /* Daha açık bordo hover */
+        }
+
+</style>
+
+<div class="header">
+    <h1>Nöbet Takvimi</h1>
+</div>
+
+<div class="container">
+    <div id="calendar"></div>
+</div>
+
+@section Scripts {
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+        <script src="/js/takvim.js"></script>
+}
+

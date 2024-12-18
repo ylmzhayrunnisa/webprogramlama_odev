@@ -1,0 +1,22 @@
+﻿@model webprogramlama_odev.Models.Randevu
+
+@{
+    ViewData["Title"] = "Randevu Sil";
+
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center text-danger">Randevu Sil</h2>
+    <p class="text-center">Bu işlemi gerçekleştirdiğinizde aşağıdaki randevu kalıcı olarak silinecektir:</p>
+    <div class="text-center">
+        <h4>@Model.Asistan.Ad @Model.Hoca.Ad</h4>
+        <p>@Model.Tarih</p>
+        <p>Bölüm: @Model.Saat</p>
+    </div>
+    <form asp controller="Randevu" asp-action="RandevuDelete" method="post">
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <button type="submit" class="btn btn-danger mt-3">Sil</button>
+        <a asp-action="Randevu" class="btn btn-secondary mt-3">Vazgeç</a>
+    </form>
+</div>

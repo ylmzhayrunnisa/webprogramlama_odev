@@ -1,0 +1,63 @@
+﻿@model webprogramlama_odev.Models.Randevu
+
+@{
+    ViewData["Title"] = "Randevu Güncelle";
+
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center">Randevu Güncelle</h2>
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger">
+            @Html.ValidationSummary()
+        </div>
+    }
+    <form asp-controller = "Randevu" asp-action="RandevuUpdate" method="post">
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <div class="form-group">
+            <label for="AsistanId">Asistan:</label>
+            <select id="AsistanId" name="AsistanId" class="form-control">
+                @foreach (var asistan in ViewBag.Asistanlar)
+                {
+                    <option value="@asistan.Id">@asistan.Ad @asistan.Soyad</option>
+                }
+            </select>
+            <span asp-validation-for="Asistan" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="HocaId">Hoca:</label>
+            <select id="HocaId" name="HocaId" class="form-control" onchange="loadMusaitlikler()">
+                <option value="">Hoca seçin</option>
+                @foreach (var hoca in ViewBag.Hocalar)
+                {
+                    <option value="@hoca.Id">@hoca.Ad @hoca.Soyad</option>
+                }
+            </select>
+            <span asp-validation-for="Hoca" class="text-danger"></span>
+        </div>
+
+        <div id="musaitliklerTarihContainer" class="form-group" style="display: none;">
+            <label for="MusaitlikTarihId">Tarih:</label>
+            <select id="MusaitlikTarihId" name="Tarih" class="form-control">
+                <option value="">Önce bir hoca seçin</option>
+            </select>
+            <span asp-validation-for="Tarih" class="text-danger"></span>
+        </div>
+
+        <div id="musaitliklerSaatContainer" class="form-group" style="display: none;">
+            <label for="MusaitlikSaatId">Saat:</label>
+            <select id="MusaitlikSaatId" name="Saat" class="form-control">
+                <option value="">Önce bir tarih seçin</option>
+            </select>
+            <span asp-validation-for="Saat" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success mt-3">Kaydet</button>
+    </form>
+</div>
+
+<script src ="/js/randevu.js"></script>
