@@ -16,5 +16,6 @@ namespace webprogramlama_odev.Models
         public ICollection<Hoca>? Hocalar { get; set; } // Navigation property for relationship with Hoca
         public ICollection<Hasta>? Hastalar { get; set; } // Navigation property for relationship with Hasta
         public ICollection<Nobet>? Nobetler { get; set; } // Navigation property for relationship with Hoca
+        public ICollection<BolumAcilDurum>? BolumAcilDurum { get; set; } // Bir AcilDurum'un birden fazla Bolum'u olabilir
     }
 }

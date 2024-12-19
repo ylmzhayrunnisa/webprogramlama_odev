@@ -13,5 +13,6 @@ namespace webprogramlama_odev.Models
         public string Aciklama { get; set; }
         public DateTime Tarih {  get; set; }
         public TimeSpan Saat { get; set; }
+        public ICollection<BolumAcilDurum>? BolumAcilDurum { get; set; } // Bir AcilDurum'un birden fazla Bolum'u olabilir
     }
 }

@@ -75,6 +75,21 @@ namespace webprogramlama_odev.Data
                 .HasForeignKey(n => n.BolumId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            // Bolum - BolumAcilDurumlar ilişkisi (Cascade)
+            modelBuilder.Entity<Bolum>()
+                .HasMany(b => b.BolumAcilDurum)
+                .WithOne(ba => ba.Bolum)
+                .HasForeignKey(ba => ba.BolumId)  // Foreign key alan adı
+                .OnDelete(DeleteBehavior.Cascade);  // Bolum silindiğinde BolumAcilDurum silinsin
+
+            // BolumAcilDurum - AcilDurum ilişkisi (Yalnızca ilişkiyi sil)
+            modelBuilder.Entity<BolumAcilDurum>()
+                .HasOne(ba => ba.AcilDurum)
+                .WithMany(ad => ad.BolumAcilDurum)
+                .HasForeignKey(ba => ba.AcilDurumId)  // Foreign key alan adı
+                .OnDelete(DeleteBehavior.Restrict);  // AcilDurum silinmesin, sadece ilişki silinsin
+
+
 
 
             base.OnModelCreating(modelBuilder);
@@ -88,6 +103,7 @@ namespace webprogramlama_odev.Data
         public DbSet<AcilDurum> AcilDurumlar { get; set; }
         public DbSet<Hasta> Hastalar { get; set; }
         public DbSet<HocaMusaitlik> HocaMusaitlikler { get; set; }
+        public DbSet<BolumAcilDurum> BolumAcilDurum { get; set; }
 
     }
 

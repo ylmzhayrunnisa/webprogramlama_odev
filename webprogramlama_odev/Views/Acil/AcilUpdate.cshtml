@@ -8,16 +8,17 @@
 
 <h2>Acil Durum Düzenle</h2>
 
-<form asp-action="Duzenle" method="post">
+<form asp-action="AcilUpdate" method="post" style="background-color: #f5f5f5; padding: 20px; border-radius: 8px;">
     <div class="mb-3">
-        <label for="Konu" class="form-label">Konu</label>
-        <input type="text" id="Konu" name="Konu" class="form-control" value="@Model.Konu" required />
+        <label for="Konu" class="form-label" style="color: #800020; font-weight: bold;">Konu</label>
+        <input type="text" id="Konu" name="Konu" class="form-control" style="border-color: #800020; background-color: #f8f4f7;" value="@Model.Konu" required />
     </div>
     <div class="mb-3">
-        <label for="Aciklama" class="form-label">Açıklama</label>
-        <textarea id="Aciklama" name="Aciklama" class="form-control" rows="3" required>@Model.Aciklama</textarea>
+        <label for="Aciklama" class="form-label" style="color: #800020; font-weight: bold;">Açıklama</label>
+        <textarea id="Aciklama" name="Aciklama" class="form-control" style="border-color: #800020; background-color: #f8f4f7;" rows="3" required>@Model.Aciklama</textarea>
     </div>
     <input type="hidden" name="Id" value="@Model.Id" />
-    <button type="submit" class="btn btn-primary">Kaydet</button>
-    <a asp-action="AcilDurumlarSayfa" class="btn btn-secondary">İptal</a>
+    <button type="submit" class="btn" style="background-color: #800020; color: white; border: none; border-radius: 4px; padding: 10px 20px; font-weight: bold;">Kaydet</button>
+    <a asp-action="AcilDurumSayfa" class="btn" style="background-color: #a0522d; color: white; border: none; border-radius: 4px; padding: 10px 20px; font-weight: bold;">İptal</a>
 </form>
+

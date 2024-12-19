@@ -4,21 +4,22 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h2>Acil Durumlar</h2>
+<h2 class="text-center mb-4" style="color: #800000;">Acil Durumlar</h2>
 
-<form asp-action="Yayinla" method="post">
+<form asp-action="Yayinla" method="post" class="p-4 shadow rounded" style="background-color: #f8e6e6; border: 1px solid #800000;">
     <div class="mb-3">
-        <label for="konu" class="form-label">Konu:</label>
-        <input type="text" id="konu" name="konu" class="form-control" required />
+        <label for="konu" class="form-label fw-bold" style="color: #800000;">Konu:</label>
+        <input type="text" id="konu" name="konu" class="form-control border-2" style="border-color: #800000;" placeholder="Acil durum konusu girin" required />
     </div>
     <div class="mb-3">
-        <label for="mesaj" class="form-label">Acil Durum Mesajı:</label>
-        <textarea id="mesaj" name="mesaj" class="form-control" rows="3" required></textarea>
+        <label for="mesaj" class="form-label fw-bold" style="color: #800000;">Acil Durum Mesajı:</label>
+        <textarea id="mesaj" name="mesaj" class="form-control border-2" style="border-color: #800000;" rows="3" placeholder="Acil durum mesajını buraya yazın" required></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Yayınla</button>
+    <button type="submit" class="btn w-100 text-white" style="background-color: #800000;">Yayınla</button>
 </form>
 
 @if (ViewBag.Mesaj != null)
+
 {
-    <div class="alert alert-success mt-3">@ViewBag.Mesaj</div>
+    <div class="alert alert-success mt-3 text-center" style="border-color: #800000; color: #800000; background-color: #f8e6e6;">@ViewBag.Mesaj</div>
 }

@@ -1,32 +1,184 @@
-﻿@{
+﻿@model IEnumerable<webprogramlama_odev.Models.Bolum>
+
+@{
     ViewData["Title"] = "Bölümler";
 
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h2 class="text-center">Bölümler Listesi</h2>
-<p class="text-center">Bu sayfada bölümlerin listesini görebilirsiniz.</p>
+<style>
+    .intro-section {
+        text-align: center; /* Yatayda ortalama */
+        padding: 20px;
+    }
 
-<!-- Örnek veri tablosu -->
-<table class="table table-bordered mt-4">
-    <thead>
+        .intro-section h1 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .intro-section p {
+            font-size: 18px;
+            color: #666;
+            text-align: center; /* Yatayda ortalama */
+        }
+
+
+    h2 {
+        font-size: 26px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 16px;
+        color: #666;
+        text-align: justify;
+        line-height: 1.6;
+    }
+
+    /* Bölüm konteyneri */
+    .department-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px;
+    }
+
+    /* Her bölümün düzeni */
+    .department-item {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        margin-bottom: 40px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .department-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+    /* Satır düzeni */
+    .department-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+        flex-wrap: wrap;
+    }
+
+        .department-row.reverse {
+            flex-direction: row-reverse; /* Bu, açıklama ve görselin yerini değiştirir */
+        }
+
+    /* Açıklama kısmı */
+    .department-description {
+        flex: 1;
+        max-width: 50%;
+    }
+
+        .department-description h2 {
+            color: #1c1c1c;
+            margin-bottom: 15px;
+        }
+
+        .department-description p {
+            font-size: 16px;
+            color: #555;
+            text-align: justify;
+            line-height: 1.6;
+        }
+
+    /* Görsel kısmı */
+    .department-image {
+        flex: 1;
+        max-width: 50%;
+    }
+
+        .department-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+            .department-image img:hover {
+                transform: scale(1.05);
+                filter: brightness(90%);
+            }
+
+
+</style>
+
+<div class="intro-section">
+    <h1>Bölümlerimiz</h1>
+    <p>Hastanemizdeki bölümler hakkında daha fazla bilgi edinmek için aşağıdaki detaylara göz atın.</p>
+</div>
+
+<div class="department-container">
+    <div class="department-item">
+        <!-- Sol tarafta görsel, sağ tarafta yazı -->
+        <div class="department-row">
+            <div class="department-image">
+                <img src="~/images/bolumler/bolum1.jpg" alt="Bölüm Görseli" />
+            </div>
+            <div class="department-description">
+                <h2>Çocuk Acil</h2>
+                <p>Çocuk Acil açıklaması buraya gelecek. Bu bölümde çocuk hastalar için acil tedavi sağlanır ve çeşitli sağlık hizmetleri sunulur.</p>
+            </div>
+        </div>
+
+        <!-- Sağ tarafta görsel, solda yazı -->
+        <div class="department-row reverse">
+            <div class="department-description">
+                <h2>Çocuk Yoğun Bakımı</h2>
+                <p>Çocuk Yoğun Bakımı açıklaması buraya gelecek. Yoğun bakımda kritik durumda olan çocuklara sağlık hizmeti sunulmaktadır.</p>
+            </div>
+            <div class="department-image">
+                <img src="~/images/bolumler/bolum2.jpg" alt="Bölüm Görseli" />
+            </div>
+        </div>
+
+        <!-- Sol tarafta görsel, sağ tarafta yazı (aşağıda) -->
+        <div class="department-row">
+            <div class="department-image">
+                <img src="~/images/bolumler/bolum3.jpg" alt="Bölüm Görseli" />
+            </div>
+            <div class="department-description">
+                <h2>Çocuk Hematolojisi ve Onkolojisi</h2>
+                <p>Çocuk Hematolojisi ve Onkolojisi açıklaması buraya gelecek. Kanser tedavisi ve hematolojik hastalıklar bu bölümde ele alınır.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2 class="text-center mb-3" style="color: #800000;">Bölümler Listesi</h2>
+<p class="text-center" style="color: #4a4a4a;">Bu sayfada bölümlerin listesini görebilirsiniz.</p>
+
+<table class="table table-bordered mt-4" style="background-color: #f8e6e6; border: 1px solid #800000;">
+    <thead style="background-color: #800000; color: white;">
         <tr>
-            <th>Id</th>
-            <th>Bölüm Adı</th>
-            <th>Hasta Sayısı</th>
-            <th>Boş Yatak Sayısı</th>
+            <th style="text-align: center;">Id</th>
+            <th style="text-align: center;">Bölüm Adı</th>
+            <th style="text-align: center;">Hasta Sayısı</th>
+            <th style="text-align: center;">Boş Yatak Sayısı</th>
         </tr>
     </thead>
     <tbody>
-        <!-- Model'den gelen verilerle doldurulacak -->
         @foreach (var bolum in Model)
+
         {
-                <tr>
-                    <td>@bolum.Id</td>
-                    <td>@bolum.BolumAdi</td>
-                    <td>@bolum.HastaSayisi</td>
-                    <td>@bolum.BosYatakSayisi</td>
-                </tr>
+            <tr>
+                <td style="text-align: center; border-color: #800000;">@bolum.Id</td>
+                <td style="text-align: center; border-color: #800000;">@bolum.BolumAdi</td>
+                <td style="text-align: center; border-color: #800000;">@bolum.HastaSayisi</td>
+                <td style="text-align: center; border-color: #800000;">@bolum.BosYatakSayisi</td>
+            </tr>
         }
     </tbody>
 </table>

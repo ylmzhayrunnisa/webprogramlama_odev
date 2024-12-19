@@ -1,0 +1,65 @@
+﻿@model IEnumerable<webprogramlama_odev.Models.BolumAcilDurum>
+
+@{
+    ViewData["Title"] = "Bölüm Acil Durum Eşleştirmeleri";
+
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Bölüm Acil Durum Eşleştirmeleri</h2>
+<p class="text-center">Her bir bölüm için eşleştirilen acil durum bilgilerini aşağıda görebilirsiniz.</p>
+
+<div class="container mt-4">
+
+    <table class="table table-bordered mt-3" id="bolumAcilDurumTablosu">
+        <thead>
+            <tr>
+                <th onclick="sortTable(0)">Bölüm</th>
+                <th onclick="sortTable(1)">Acil Durum</th>
+                <th onclick="sortTable(2)">Tarih</th>
+                <th onclick="sortTable(3)">Saat</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            var isUsed = Model.Any(m => m.BolumId == item.BolumId && m.AcilDurumId == item.AcilDurumId);
+            <tr style="color: @(isUsed ? "red" : "black");">
+                <td>@item.Bolum.BolumAdi</td>
+                <td>@item.AcilDurum.Konu</td>
+                <td>@item.AcilDurum.Tarih.ToShortDateString()</td>
+                <td>@item.AcilDurum.Saat</td>
+            </tr>
+        }
+    </table>
+</div>
+
+<script>
+    function sortTable(columnIndex) {
+        var table = document.getElementById("bolumAcilDurumTablosu");
+        var rows = table.rows;
+        var switching = true;
+        var shouldSwitch;
+        var i;
+        var x, y;
+        var switchCount = 0;
+
+        while (switching) {
+            switching = false;
+            for (i = 1; i < (rows.length - 1); i++) {
+                shouldSwitch = false;
+                x = rows[i].getElementsByTagName("TD")[columnIndex];
+                y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
+                }
+            }
+            if (shouldSwitch) {
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                switchCount++;
+            }
+        }
+    }
+</script>
+

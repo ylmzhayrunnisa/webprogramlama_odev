@@ -183,8 +183,8 @@ namespace webprogramlama_odev.Controllers
         {
             // Hoca bilgilerini bölümleriyle birlikte sorgulama
             var hocalar = _context.Hocalar
-                .Include(h => h.Bolum)
-                .AsQueryable();
+                .Include(h => h.Bolum);
+                
 
 
             // Sonuçları listeye çevir ve görünümde göster
@@ -196,9 +196,8 @@ namespace webprogramlama_odev.Controllers
         public IActionResult HocaList(string searchTerm)
         {
             var hocalar = _context.Hocalar
-                .Include(h => h.Bolum) 
-                .OrderBy(h => h.Bolum.BolumAdi)  
-                .AsQueryable();       
+                .Include(h => h.Bolum);
+                    
 
 
             // Sonuçları listeye çevir ve görünümde göster

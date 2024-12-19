@@ -1,7 +1,7 @@
-﻿@model webprogramlama_odev.Models.HocaMusaitlik
+﻿@model webprogramlama_odev.Models.BolumAcilDurum
 
 @{
-    ViewData["Title"] = "Yeni Müsaitlik Ekle";
+    ViewData["Title"] = "Yeni Bölüm Acil Durum Ekle";
 
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
@@ -36,8 +36,7 @@
         }
 
         .form-container input[type="text"],
-        .form-container input[type="email"],
-        .form-container input[type="file"],
+        .form-container input[type="date"],
         .form-container select {
             width: 100%;
             padding: 10px;
@@ -83,26 +82,39 @@
 
 <div class="container mt-4">
     <div class="form-container">
-    <h2>Yeni Müsaitlik Ekle</h2>
-    <form asp-controller="HocaMusaitlik" asp-action="HocaMusaitlikAdd" method="post">
-        <div class="form-group">
-            <label asp-for="Hoca"></label>
-            <select asp-for="HocaId" class="form-control">
-                @foreach (var hoca in ViewBag.Hocalar as List<webprogramlama_odev.Models.Hoca>)
-                {
-                    <option value="@hoca.Id">@hoca.Ad @hoca.Soyad</option>
-                }
-            </select>
-        </div>
-        <div class="form-group">
-            <label asp-for="Tarih" class="form-label"></label>
-            <input asp-for="Tarih" class="form-control" type="date" />
-        </div>
-        <div class="form-group">
-            <label asp-for="Saat" class="form-label"></label>
-            <input asp-for="Saat" class="form-control" type="time" />
-        </div>
-        <button type="submit" class="btn btn-primary">Kaydet</button>
-    </form>
-</div>
+        <h2>Yeni Bölüm Acil Durum Ekle</h2>
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger">
+                @Html.ValidationSummary()
+            </div>
+        }
+        <form asp-controller="BolumAcilDurum" asp-action="BolumAcilDurumAdd" method="post">
+            <div class="form-group">
+                <label asp-for="Bolum"></label>
+                <select asp-for="BolumId" class="form-control">
+                    <option value="">Seçiniz</option>  <!-- Varsayılan "Seçiniz" opsiyonu eklenebilir -->
+                    @foreach (var bolum in ViewBag.Bolumler as List<webprogramlama_odev.Models.Bolum>)
+                    {
+                        <option value="@bolum.Id">@bolum.BolumAdi</option>
+                    }
+                    
+                </select>
+                <span asp-validation-for="BolumId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AcilDurum"></label>
+                <select asp-for="AcilDurumId" class="form-control">
+                    <option value="">Seçiniz</option>  <!-- Varsayılan "Seçiniz" opsiyonu eklenebilir -->
+                    @foreach (var acilDurum in ViewBag.AcilDurumlar as List<webprogramlama_odev.Models.AcilDurum>)
+                    {
+                        <option value="@acilDurum.Id">@acilDurum.Konu</option>
+                    }
+                    
+                </select>
+                <span asp-validation-for="AcilDurumId" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </form>
+    </div>
 </div>

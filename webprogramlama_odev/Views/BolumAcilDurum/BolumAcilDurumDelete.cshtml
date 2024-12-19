@@ -1,0 +1,75 @@
+﻿@model webprogramlama_odev.Models.BolumAcilDurum
+
+@{
+    ViewData["Title"] = "Bölüm Acil Durum Sil";
+
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<style>
+    /* Container ayarları */
+    .form-container {
+        background-color: #ffffff; /* Beyaz arkaplan */
+        border: 1px solid #ddd; /* İnce gri çerçeve */
+        border-radius: 10px; /* Köşeleri yumuşat */
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge efekti */
+        padding: 30px; /* İçerik ile kenar arası */
+        margin: 20px auto; /* Ekran ortasına yerleştir */
+        max-width: 600px; /* Maksimum genişlik */
+    }
+
+        /* Başlık */
+        .form-container h2 {
+            color: #800020; /* Bordo */
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        /* Sil Butonu */
+        .form-container button[type="submit"] {
+            background-color: #b33c50; /* Bordo */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            margin: 20px auto 0;
+        }
+
+            .form-container button[type="submit"]:hover {
+                background-color: #5f0018; /* Daha koyu bordo */
+            }
+
+        .form-container a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #6c757d; /* Gri */
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+            .form-container a:hover {
+                background-color: #5a6268; /* Daha koyu gri */
+            }
+
+</style>
+
+<div class="form-container">
+    <h2>Bölüm Acil Durum Sil</h2>
+
+    <div>
+        <p><strong>Bölüm:</strong> @Model.Bolum.BolumAdi</p>
+        <p><strong>Acil Durum:</strong> @Model.AcilDurum.Konu</p>
+    </div>
+
+    <form asp-controller="BolumAcilDurum" asp-action="BolumAcilDurumDelete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Sil</button>
+        <a asp-action="BolumAcilDurumList" class="btn btn-secondary">İptal</a>
+    </form>
+</div>

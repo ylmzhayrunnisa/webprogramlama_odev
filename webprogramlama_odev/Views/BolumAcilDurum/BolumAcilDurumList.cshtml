@@ -1,0 +1,114 @@
+﻿@model IEnumerable<webprogramlama_odev.Models.BolumAcilDurum>
+
+@{
+    ViewData["Title"] = "Bölüm Acil Durumlar";
+
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<style>
+    /* Genel tablo ayarları */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 1em;
+        font-family: 'Arial', sans-serif;
+        min-width: 600px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        background-color: #fff;
+    }
+
+        table thead tr {
+            background-color: #800020; /* Bordo */
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        table th, table td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        table tbody tr:nth-of-type(even) {
+            background-color: #f9e6e9; /* Hafif pembe ton */
+        }
+
+        table tbody tr:hover {
+            background-color: #f5d0d7; /* Açık bordo hover */
+            cursor: pointer;
+        }
+
+    .btn-primary, .btn-danger {
+        color: #fff;
+        font-size: 0.9em;
+        border-radius: 4px;
+        padding: 6px 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary {
+        background-color: #b33c50; /* Koyu bordo */
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #922a3d;
+        }
+
+    .btn-danger {
+        background-color: #800020;
+        border: none;
+    }
+
+        .btn-danger:hover {
+            background-color: #5f0018;
+        }
+
+    .btn {
+        background-color: #b33c50;
+        color: #fff;
+        padding: 8px 16px;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn:hover {
+            background-color: #922a3d;
+            color: #fff;
+        }
+</style>
+
+<h2 class="text-center">Bölüm Acil Durumlar</h2>
+<p>
+    <a asp-action="BolumAcilDurumAdd" class="btn">Yeni Bölüm Acil Durum Ekle</a>
+</p>
+
+<div class="container mt-4">
+    <table class="table table-bordered mt-3" id="bolumAcilTablosu">
+        <thead>
+            <tr>
+                <th>Bölüm</th>
+                <th>Acil Durum</th>
+                <th>Durum Tarihi</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Bolum.BolumAdi</td>
+                    <td>@item.AcilDurum.Konu</td>
+                    <td>
+                        <a asp-action="BolumAcilDurumUpdate" asp-route-id="@item.Id" class="btn btn-sm">Düzenle</a>
+                        <a asp-action="BolumAcilDurumDelete" asp-route-id="@item.Id" class="btn btn-sm">Sil</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

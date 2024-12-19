@@ -196,9 +196,9 @@ namespace webprogramlama_odev.Controllers
         {
             // Asistanlar bilgilerini bölümleriyle birlikte sorgulama
             var asistanlar = _context.Asistanlar
-                .Include(h => h.Bolum)
-                .AsQueryable();
-     
+                 .Include(h => h.Bolum);
+
+
 
             // Sonuçları listeye çevir ve görünümde göster
             return View(asistanlar.ToList());
@@ -209,19 +209,9 @@ namespace webprogramlama_odev.Controllers
         public IActionResult AsistanList(string searchTerm)
         {
             var asistanlar = _context.Asistanlar
-                .Include(h => h.Bolum)
-                .OrderBy(h => h.Bolum.BolumAdi)
-                .AsQueryable();
+                .Include(h => h.Bolum);
 
-            // Arama fonksiyonu
-            if (!string.IsNullOrEmpty(searchTerm))
-            {
-                asistanlar = asistanlar.Where(h =>
-                    h.Ad.Contains(searchTerm) ||
-                    h.Soyad.Contains(searchTerm) ||
-                    (h.Ad + " " + h.Soyad).Contains(searchTerm)
-                );
-            }
+           
 
             return View(asistanlar.ToList());
         }
@@ -324,7 +314,7 @@ namespace webprogramlama_odev.Controllers
             if (asistan != null)
             {
                 _context.Randevular.RemoveRange(asistan.Randevular);
-                _context.Asistanlar.Remove(asistan);
+                _context.Asistanlar.Remove(asistan); 
                 _context.SaveChanges();
             }
 

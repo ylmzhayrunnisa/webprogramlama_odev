@@ -49,8 +49,8 @@ namespace webprogramlama_odev.Helper
 
                 using (var client = new SmtpClient())
                 {
-                    client.Connect("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
-                    client.Authenticate("wpodev11@gmail.com", "csvx lylz nwqp tfhc\r\n"); // Uygulama şifresini kullanın
+                    client.Connect("smtp.gmail.com", 465, MailKit.Security.SecureSocketOptions.SslOnConnect);
+                    client.Authenticate("wpodev11@gmail.com", "csvx lylz nwqp tfhc"); // Uygulama şifresini kullanın
                     client.Send(message);
                     client.Disconnect(true);
                 }
@@ -80,7 +80,7 @@ namespace webprogramlama_odev.Helper
                     foreach (var to in recipients.Where(email => !string.IsNullOrEmpty(email)))
                     {
                         var message = new MimeMessage();
-                        message.From.Add(new MailboxAddress("Pediatri Nöbet Yönetim Sistemi", _smtpUsername));
+                        message.From.Add(new MailboxAddress("Pediatri Yönetim Sistemi", _smtpUsername));
                         message.To.Add(new MailboxAddress("", to));
                         message.Subject = subject;
                         message.Body = new TextPart("plain")
