@@ -62,26 +62,16 @@ namespace webprogramlama_odev.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult GetBolumAcilDurum(int bolumId)
-        {
-            var BolumAcilDurum = _context.BolumAcilDurum
-                .Where(m => m.BolumId == bolumId && !_context.AcilDurumlar
-                    .Any(ad => ad.Konu == ad.Konu && ad.Aciklama == ad.Aciklama))
-                .ToList();
 
-            return Json(BolumAcilDurum);
-        }
 
         [HttpPost]
         public IActionResult BolumAcilDurumAdd(BolumAcilDurum bolumAcilDurum)
         {
-            if (!ModelState.IsValid)
-            {
+            
                 ViewBag.Bolumler = _context.Bolumler.ToList();
                 ViewBag.AcilDurumlar = _context.AcilDurumlar.ToList();
-                return View(bolumAcilDurum);
-            }
+                
+            
 
             _context.BolumAcilDurum.Add(bolumAcilDurum);
             _context.SaveChanges();
@@ -103,12 +93,11 @@ namespace webprogramlama_odev.Controllers
         [HttpPost]
         public IActionResult BolumAcilDurumUpdate(BolumAcilDurum bolumAcilDurum)
         {
-            if (!ModelState.IsValid)
-            {
+           
                 ViewBag.Bolumler = _context.Bolumler.ToList();
                 ViewBag.AcilDurumlar = _context.AcilDurumlar.ToList();
-                return View(bolumAcilDurum);
-            }
+               
+            
 
             _context.BolumAcilDurum.Update(bolumAcilDurum);
             _context.SaveChanges();
